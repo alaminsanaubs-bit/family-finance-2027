@@ -5,123 +5,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#075e48">
+<meta name="description" content="পরিবারের আয়, ব্যয় ও বাজেট ব্যবস্থাপনা">
+<link rel="manifest" href="./manifest.json">
 <title>সংসার হিসাব ২০২৭</title>
 
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;background:#f1f5f9;color:#1e293b;
- font-family:Arial,"Noto Sans Bengali",sans-serif
-}
-header{
- background:linear-gradient(135deg,#075e48,#0f766e);
- color:white;padding:22px 16px;border-radius:0 0 25px 25px;
-}
+body{margin:0;background:#f1f5f9;color:#1e293b;font-family:Arial,"Noto Sans Bengali",sans-serif}
+header{background:linear-gradient(135deg,#075e48,#0f766e);color:white;padding:23px 16px;border-radius:0 0 25px 25px}
 header h1{font-size:23px;margin:0 0 7px}
 header p{margin:0;font-size:13px;opacity:.9}
 .container{max-width:1000px;margin:auto;padding:14px}
-.status{
- display:flex;justify-content:space-between;align-items:center;
- padding:12px;background:white;border-radius:14px;
- margin:12px 0;font-size:13px
-}
-.dot{display:inline-block;width:9px;height:9px;
- border-radius:50%;background:#16a34a;margin-right:5px}
-.cards{
- display:grid;grid-template-columns:repeat(2,1fr);gap:12px
-}
-.card{
- background:white;border-radius:18px;padding:16px;
- box-shadow:0 2px 8px #00000008
-}
+.status{display:flex;justify-content:space-between;align-items:center;padding:12px;background:white;border-radius:14px;margin:12px 0;font-size:13px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#16a34a;margin-right:5px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:white;border-radius:18px;padding:16px;box-shadow:0 2px 8px #00000008;min-width:0}
 .card small{color:#64748b;font-size:13px}
-.card h2{margin:10px 0 0;font-size:22px;overflow-wrap:anywhere}
-.green{color:#059669}
-.red{color:#dc2626}
-.blue{color:#2563eb}
-.purple{color:#7c3aed}
-.section{
- background:white;border-radius:18px;padding:16px;
- margin-top:14px
-}
+.card h2{margin:10px 0 0;font-size:21px;overflow-wrap:anywhere}
+.green{color:#059669}.red{color:#dc2626}.blue{color:#2563eb}
+.section{background:white;border-radius:18px;padding:16px;margin-top:14px}
 .section h3{margin:0 0 14px;font-size:17px}
-button{
- border:0;border-radius:12px;padding:11px 14px;
- background:#075e48;color:white;font-size:14px;
- font-weight:bold;cursor:pointer
-}
-button:active{opacity:.7}
+button{border:0;border-radius:12px;padding:11px 14px;background:#075e48;color:white;font-size:14px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.5}
 button.secondary{background:#e2e8f0;color:#334155}
 button.active{background:#075e48;color:white}
-.nav{
- display:flex;gap:8px;overflow-x:auto;padding:10px 0;
-}
-.nav button{white-space:nowrap}
-.monthGrid{
- display:grid;grid-template-columns:repeat(3,1fr);gap:8px
-}
-.monthGrid button{
- background:#e2e8f0;color:#334155;padding:12px 5px;
- font-size:13px
-}
+.monthGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.monthGrid button{background:#e2e8f0;color:#334155;padding:12px 5px;font-size:13px}
 .monthGrid button.active{background:#075e48;color:white}
-table{
- width:100%;border-collapse:collapse;font-size:13px;
- min-width:600px
-}
-th,td{
- padding:10px 8px;border-bottom:1px solid #e2e8f0;
- text-align:left;white-space:nowrap
-}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
+th,td{padding:10px 8px;border-bottom:1px solid #e2e8f0;text-align:left;white-space:nowrap}
 th{background:#f8fafc;color:#475569}
 .tableWrap{overflow-x:auto}
-.mini{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:10px
-}
-.mini div{background:#f8fafc;border-radius:12px;padding:12px}
+.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mini div{background:#f8fafc;border-radius:12px;padding:12px;min-width:0}
 .mini small{color:#64748b}
-.mini strong{display:block;margin-top:7px;font-size:16px}
-input,select{
- width:100%;padding:12px;border:1px solid #cbd5e1;
- border-radius:12px;font-size:14px;margin:8px 0;
- background:white;color:#1e293b
-}
-.progress{
- height:9px;background:#e2e8f0;border-radius:20px;
- overflow:hidden;margin-top:8px
-}
+.mini strong{display:block;margin-top:7px;font-size:16px;overflow-wrap:anywhere}
+input{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:12px;font-size:14px;margin:8px 0;background:white;color:#1e293b}
+.progress{height:9px;background:#e2e8f0;border-radius:20px;overflow:hidden;margin-top:8px}
 .progress div{height:100%;background:#0d9488}
 footer{text-align:center;color:#64748b;padding:25px;font-size:12px}
 .hidden{display:none!important}
 .empty{text-align:center;padding:25px;color:#64748b}
-#loading{padding:25px;text-align:center;color:#64748b}
+#loading{text-align:center;padding:25px;color:#64748b}
 @media(min-width:700px){
- .cards{grid-template-columns:repeat(4,1fr)}
- .monthGrid{grid-template-columns:repeat(6,1fr)}
- .mini{grid-template-columns:repeat(4,1fr)}
+.cards{grid-template-columns:repeat(4,1fr)}
+.monthGrid{grid-template-columns:repeat(6,1fr)}
+.mini{grid-template-columns:repeat(4,1fr)}
 }
 </style>
 </head>
 
 <body>
-
 <header>
- <h1>🏠 সংসার হিসাব ২০২৭</h1>
- <p>পরিবারের আয়, ব্যয় ও বাজেট ব্যবস্থাপনা</p>
+<h1>🏠 সংসার হিসাব ২০২৭</h1>
+<p>পরিবারের আয়, ব্যয় ও বাজেট ব্যবস্থাপনা</p>
 </header>
 
 <div class="container">
 
 <div class="status">
- <div id="connection">
-  <span class="dot"></span> সংযোগ পরীক্ষা হচ্ছে
- </div>
- <button class="secondary" onclick="refreshData()">↻ আপডেট</button>
+<div id="connection"><span class="dot"></span> সংযোগ পরীক্ষা হচ্ছে</div>
+<button class="secondary" id="refreshButton" onclick="refreshData()">↻ আপডেট</button>
 </div>
 
 <div id="lastUpdated" style="font-size:12px;color:#64748b;margin:8px 2px">
- সর্বশেষ আপডেট: অপেক্ষমাণ
+সর্বশেষ আপডেট: অপেক্ষমাণ
 </div>
 
 <div id="loading">📊 হিসাবের তথ্য লোড হচ্ছে...</div>
@@ -129,235 +77,121 @@ footer{text-align:center;color:#64748b;padding:25px;font-size:12px}
 <div id="dashboard" class="hidden">
 
 <div class="cards">
- <div class="card">
-  <small>💰 বার্ষিক বাজেট</small>
-  <h2 id="annualBudget">৳0</h2>
- </div>
- <div class="card">
-  <small>📥 মোট জমা</small>
-  <h2 id="annualDeposit" class="green">৳0</h2>
- </div>
- <div class="card">
-  <small>📤 মোট খরচ</small>
-  <h2 id="annualExpense" class="red">৳0</h2>
- </div>
- <div class="card">
-  <small>💵 অবশিষ্ট ব্যালেন্স</small>
-  <h2 id="annualBalance" class="blue">৳0</h2>
- </div>
+<div class="card"><small>💰 বার্ষিক বাজেট</small><h2 id="annualBudget">৳0</h2></div>
+<div class="card"><small>📥 মোট জমা</small><h2 id="annualDeposit" class="green">৳0</h2></div>
+<div class="card"><small>📤 মোট খরচ</small><h2 id="annualExpense" class="red">৳0</h2></div>
+<div class="card"><small>💵 অবশিষ্ট ব্যালেন্স</small><h2 id="annualBalance" class="blue">৳0</h2></div>
 </div>
 
 <div class="section">
- <h3>📈 বার্ষিক হিসাবের সারাংশ</h3>
- <div class="mini">
-  <div>
-   <small>গড় মাসিক খরচ</small>
-   <strong id="averageExpense">৳0</strong>
-  </div>
-  <div>
-   <small>বাজেট অতিক্রম মাস</small>
-   <strong id="overBudget">0</strong>
-  </div>
-  <div>
-   <small>অবশিষ্ট বাজেট</small>
-   <strong id="remainingBudget">৳0</strong>
-  </div>
-  <div>
-   <small>বাজেট ব্যবহার</small>
-   <strong id="utilization">0%</strong>
-  </div>
- </div>
+<h3>📈 বার্ষিক হিসাবের সারাংশ</h3>
+<div class="mini">
+<div><small>গড় মাসিক খরচ</small><strong id="averageExpense">৳0</strong></div>
+<div><small>বাজেট অতিক্রম মাস</small><strong id="overBudget">0</strong></div>
+<div><small>অবশিষ্ট বাজেট</small><strong id="remainingBudget">৳0</strong></div>
+<div><small>বাজেট ব্যবহার</small><strong id="utilization">0%</strong></div>
+</div>
 </div>
 
 <div class="section">
- <h3>📅 মাস নির্বাচন করুন</h3>
- <div class="monthGrid" id="monthButtons"></div>
+<h3>📅 মাস নির্বাচন করুন</h3>
+<div class="monthGrid" id="monthButtons"></div>
 </div>
 
 <div class="section">
- <h3 id="monthTitle">📊 মাসিক হিসাব</h3>
- <div class="cards">
-  <div class="card">
-   <small>মাসিক বাজেট</small>
-   <h2 id="monthlyBudget">৳0</h2>
-  </div>
-  <div class="card">
-   <small>মোট জমা</small>
-   <h2 id="monthlyDeposit" class="green">৳0</h2>
-  </div>
-  <div class="card">
-   <small>মোট খরচ</small>
-   <h2 id="monthlyExpense" class="red">৳0</h2>
-  </div>
-  <div class="card">
-   <small>ব্যালেন্স</small>
-   <h2 id="monthlyBalance" class="blue">৳0</h2>
-  </div>
- </div>
- <div class="mini" style="margin-top:12px">
-  <div>
-   <small>বাজেট অবশিষ্ট</small>
-   <strong id="budgetRemain">৳0</strong>
-  </div>
-  <div>
-   <small>বাজেট ব্যবহার</small>
-   <strong id="monthUsage">0%</strong>
-  </div>
-  <div>
-   <small>লেনদেন সংখ্যা</small>
-   <strong id="transactionCount">0</strong>
-  </div>
-  <div>
-   <small>বাজেট অবস্থা</small>
-   <strong id="budgetStatus">-</strong>
-  </div>
- </div>
+<h3 id="monthTitle">📊 মাসিক হিসাব</h3>
+<div class="cards">
+<div class="card"><small>মাসিক বাজেট</small><h2 id="monthlyBudget">৳0</h2></div>
+<div class="card"><small>মোট জমা</small><h2 id="monthlyDeposit" class="green">৳0</h2></div>
+<div class="card"><small>মোট খরচ</small><h2 id="monthlyExpense" class="red">৳0</h2></div>
+<div class="card"><small>ব্যালেন্স</small><h2 id="monthlyBalance" class="blue">৳0</h2></div>
+</div>
+<div class="mini" style="margin-top:12px">
+<div><small>বাজেট অবশিষ্ট</small><strong id="budgetRemain">৳0</strong></div>
+<div><small>বাজেট ব্যবহার</small><strong id="monthUsage">0%</strong></div>
+<div><small>লেনদেন সংখ্যা</small><strong id="transactionCount">0</strong></div>
+<div><small>বাজেট অবস্থা</small><strong id="budgetStatus">-</strong></div>
+</div>
 </div>
 
 <div class="section">
- <h3>📂 ক্যাটাগরি অনুযায়ী খরচ</h3>
- <div class="tableWrap">
-  <table>
-   <thead>
-    <tr>
-     <th>ক্যাটাগরি</th>
-     <th>খরচ</th>
-     <th>বাজেট</th>
-     <th>অবশিষ্ট</th>
-     <th>ব্যবহার</th>
-    </tr>
-   </thead>
-   <tbody id="categoryTable"></tbody>
-  </table>
- </div>
+<h3>📂 ক্যাটাগরি অনুযায়ী খরচ</h3>
+<div class="tableWrap">
+<table>
+<thead><tr><th>ক্যাটাগরি</th><th>খরচ</th><th>বাজেট</th><th>অবশিষ্ট</th><th>ব্যবহার</th></tr></thead>
+<tbody id="categoryTable"></tbody>
+</table>
+</div>
 </div>
 
 <div class="section">
- <h3>🧾 মাসের লেনদেন</h3>
- <input id="transactionSearch" placeholder="🔎 পণ্য বা ক্যাটাগরি খুঁজুন..."
-  oninput="renderTransactions()">
- <div class="tableWrap">
-  <table>
-   <thead>
-    <tr>
-     <th>তারিখ</th>
-     <th>জমা</th>
-     <th>পণ্য</th>
-     <th>খরচ</th>
-     <th>ব্যালেন্স</th>
-     <th>ক্যাটাগরি</th>
-     <th>বিবরণ</th>
-    </tr>
-   </thead>
-   <tbody id="transactionTable"></tbody>
-  </table>
- </div>
- <div id="transactionEmpty" class="empty hidden">
-  কোনো লেনদেন পাওয়া যায়নি।
- </div>
+<h3>🧾 মাসের লেনদেন</h3>
+<input id="transactionSearch" placeholder="🔎 পণ্য বা ক্যাটাগরি খুঁজুন..." oninput="renderTransactions()">
+<div class="tableWrap">
+<table>
+<thead><tr><th>তারিখ</th><th>জমা</th><th>পণ্য</th><th>খরচ</th><th>ব্যালেন্স</th><th>ক্যাটাগরি</th><th>বিবরণ</th></tr></thead>
+<tbody id="transactionTable"></tbody>
+</table>
+</div>
+<div id="transactionEmpty" class="empty hidden">কোনো লেনদেন পাওয়া যায়নি।</div>
 </div>
 
 <div class="section">
- <h3>🛒 Master List</h3>
- <input id="masterSearch" placeholder="🔎 পণ্যের নাম খুঁজুন..."
-  oninput="renderMaster()">
- <div class="tableWrap">
-  <table>
-   <thead>
-    <tr>
-     <th>পণ্যের নাম</th>
-     <th>ক্যাটাগরি</th>
-     <th>একক</th>
-     <th>বিবরণ</th>
-    </tr>
-   </thead>
-   <tbody id="masterTable"></tbody>
-  </table>
- </div>
- <div id="masterEmpty" class="empty hidden">
-  পণ্য পাওয়া যায়নি।
- </div>
+<h3>🛒 Master List</h3>
+<input id="masterSearch" placeholder="🔎 পণ্যের নাম খুঁজুন..." oninput="renderMaster()">
+<div class="tableWrap">
+<table>
+<thead><tr><th>পণ্যের নাম</th><th>ক্যাটাগরি</th><th>একক</th><th>বিবরণ</th></tr></thead>
+<tbody id="masterTable"></tbody>
+</table>
+</div>
+<div id="masterEmpty" class="empty hidden">পণ্য পাওয়া যায়নি।</div>
 </div>
 
 <div class="section">
- <h3>⚙️ বাজেট ও সেটিংস</h3>
- <div class="tableWrap">
-  <table>
-   <thead>
-    <tr>
-     <th>ক্যাটাগরি</th>
-     <th>মাসিক বাজেট</th>
-     <th>বার্ষিক বাজেট</th>
-     <th>বিবরণ</th>
-    </tr>
-   </thead>
-   <tbody id="settingsTable"></tbody>
-  </table>
- </div>
+<h3>⚙️ বাজেট ও সেটিংস</h3>
+<div class="tableWrap">
+<table>
+<thead><tr><th>ক্যাটাগরি</th><th>মাসিক বাজেট</th><th>বার্ষিক বাজেট</th><th>বিবরণ</th></tr></thead>
+<tbody id="settingsTable"></tbody>
+</table>
+</div>
 </div>
 
 <div class="section">
- <h3>📊 বার্ষিক মাসভিত্তিক হিসাব</h3>
- <div class="tableWrap">
-  <table>
-   <thead>
-    <tr>
-     <th>মাস</th>
-     <th>বাজেট</th>
-     <th>জমা</th>
-     <th>খরচ</th>
-     <th>অবস্থা</th>
-     <th>ব্যালেন্স</th>
-     <th>ব্যবহার</th>
-    </tr>
-   </thead>
-   <tbody id="annualTable"></tbody>
-  </table>
- </div>
+<h3>📊 বার্ষিক মাসভিত্তিক হিসাব</h3>
+<div class="tableWrap">
+<table>
+<thead><tr><th>মাস</th><th>বাজেট</th><th>জমা</th><th>খরচ</th><th>অবস্থা</th><th>ব্যালেন্স</th><th>ব্যবহার</th></tr></thead>
+<tbody id="annualTable"></tbody>
+</table>
+</div>
 </div>
 
 </div>
 </div>
 
-<footer>
- সংসার হিসাব ২০২৭ • Read Only • Auto Sync
-</footer>
+<footer>সংসার হিসাব ২০২৭ • Read Only • Auto Sync</footer>
 
 <script>
-
-// ======================================
-// API
-// ======================================
+"use strict";
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbx_3iGwoODrZ_YljJn_3ctcQnNC0h5qsyFD9OK9k5q5K7pMTCRUbRvoRo3kIyNGRgJU/exec";
 
 const CACHE_KEY = "family_finance_2027_data";
+const months = [
+"জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন",
+"জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"
+];
 
 let appData = null;
 let selectedMonth = 0;
 let isLoading = false;
 
-
-// ======================================
-// বাংলা মাস
-// ======================================
-
-const months = [
-"জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল",
-"মে","জুন","জুলাই","আগস্ট",
-"সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"
-];
-
-
-// ======================================
-// টাকা ফরম্যাট
-// ======================================
-
-function money(value){
- const n = Number(value || 0);
- return "৳" + n.toLocaleString("bn-BD",{
-  maximumFractionDigits:2
+function escapeHTML(value){
+ return String(value ?? "").replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
  });
 }
 
@@ -365,112 +199,96 @@ function num(value){
  return Number(value || 0);
 }
 
-function pct(value){
- return num(value).toLocaleString("bn-BD",{
-  maximumFractionDigits:1
- }) + "%";
+function money(value){
+ return "৳" + num(value).toLocaleString("bn-BD",{maximumFractionDigits:2});
 }
 
-function clean(value){
- if(value===null || value===undefined) return "";
+function pct(value){
+ return (num(value)*100).toLocaleString("bn-BD",{maximumFractionDigits:1})+"%";
+}
+
+function displayDate(value){
+ if(!value) return "";
+ const d=new Date(value);
+ if(!isNaN(d.getTime())){
+  return d.toLocaleDateString("bn-BD");
+ }
  return String(value);
 }
 
-
-// ======================================
-// সংযোগ
-// ======================================
-
 function setConnection(online){
  const el=document.getElementById("connection");
-
- if(online){
-  el.innerHTML='<span class="dot"></span> অনলাইন';
- }else{
-  el.innerHTML='<span style="color:#dc2626">●</span> অফলাইন';
- }
+ el.innerHTML=online
+ ? '<span class="dot"></span> অনলাইন'
+ : '<span style="color:#dc2626">●</span> অফলাইন';
 }
 
-
-// ======================================
-// API লোড
-// ======================================
+function showLastUpdated(value){
+ const d=value ? new Date(value) : null;
+ document.getElementById("lastUpdated").textContent =
+ d && !isNaN(d.getTime())
+ ? "সর্বশেষ আপডেট: "+d.toLocaleString("bn-BD")
+ : "সর্বশেষ আপডেট: সংরক্ষিত তথ্য";
+}
 
 async function refreshData(){
-
  if(isLoading) return;
  isLoading=true;
 
- document.getElementById("loading").textContent=
- "📊 তথ্য আপডেট হচ্ছে...";
+ const btn=document.getElementById("refreshButton");
+ btn.disabled=true;
+ btn.textContent="আপডেট হচ্ছে...";
 
  try{
-
   const response=await fetch(API_URL,{
    method:"GET",
-   cache:"no-store"
+   cache:"no-store",
+   redirect:"follow"
   });
 
-  if(!response.ok){
-   throw new Error("API response error");
-  }
+  if(!response.ok) throw new Error("API response error");
 
   const data=await response.json();
 
-  if(!data.success){
-   throw new Error(data.error || "API error");
+  if(!data.success) throw new Error(data.error || "API error");
+  if(!Array.isArray(data.months) || data.months.length!==12){
+   throw new Error("মাসের তথ্য সঠিক নয়");
   }
 
   appData=data;
-
   localStorage.setItem(CACHE_KEY,JSON.stringify(data));
 
   setConnection(true);
   showData(data);
-
-  document.getElementById("lastUpdated").textContent=
-  "সর্বশেষ আপডেট: "+
-  new Date(data.updatedAt).toLocaleString("bn-BD");
+  showLastUpdated(data.updatedAt);
 
  }catch(error){
-
   setConnection(false);
 
   const cached=localStorage.getItem(CACHE_KEY);
 
   if(cached){
-
    try{
     appData=JSON.parse(cached);
     showData(appData);
-
-    document.getElementById("lastUpdated").textContent=
-    "ক্যাশ করা তথ্য দেখানো হচ্ছে";
-
+    showLastUpdated(appData.updatedAt);
+    document.getElementById("lastUpdated").textContent += " (সংরক্ষিত তথ্য)";
    }catch(e){
-    document.getElementById("loading").textContent=
-    "তথ্য লোড করা সম্ভব হয়নি";
+    document.getElementById("loading").textContent="সংরক্ষিত তথ্য পড়া যায়নি।";
    }
-
   }else{
-
    document.getElementById("loading").textContent=
    "ইন্টারনেট সংযোগ বা API সমস্যা। আবার চেষ্টা করুন।";
-
   }
 
  }finally{
   isLoading=false;
+  btn.disabled=false;
+  btn.textContent="↻ আপডেট";
  }
 }
 
-
-// ======================================
-// তথ্য প্রদর্শন
-// ======================================
-
 function showData(data){
-
  document.getElementById("loading").classList.add("hidden");
  document.getElementById("dashboard").classList.remove("hidden");
 
@@ -481,13 +299,7 @@ function showData(data){
  renderSettings();
 }
 
-
-// ======================================
-// বার্ষিক ড্যাশবোর্ড
-// ======================================
-
 function renderAnnual(data){
-
  const a=data.annualDashboard.summary;
  const rows=data.annualDashboard.monthlyTable;
 
@@ -497,75 +309,48 @@ function renderAnnual(data){
  document.getElementById("annualBalance").textContent=money(a[0][7]);
 
  document.getElementById("averageExpense").textContent=money(a[1][1]);
- document.getElementById("overBudget").textContent=clean(a[1][3]);
+ document.getElementById("overBudget").textContent=String(a[1][3] ?? 0);
  document.getElementById("remainingBudget").textContent=money(a[1][5]);
  document.getElementById("utilization").textContent=pct(a[1][7]);
 
  let html="";
-
  rows.forEach((r,i)=>{
-
   if(i===rows.length-1 && !r[0]) return;
-
   html+="<tr>"+
-   "<td>"+clean(r[0])+"</td>"+
+   "<td>"+escapeHTML(r[0])+"</td>"+
    "<td>"+money(r[1])+"</td>"+
    "<td>"+money(r[2])+"</td>"+
    "<td>"+money(r[3])+"</td>"+
-   "<td>"+clean(r[4])+"</td>"+
+   "<td>"+escapeHTML(r[4])+"</td>"+
    "<td>"+money(r[5])+"</td>"+
-   "<td>"+clean(r[6])+"</td>"+
+   "<td>"+pct(r[6])+"</td>"+
   "</tr>";
-
  });
-
  document.getElementById("annualTable").innerHTML=html;
 }
 
-
-// ======================================
-// মাস নির্বাচন
-// ======================================
-
 function renderMonthButtons(){
-
- const el=document.getElementById("monthButtons");
  let html="";
-
  months.forEach((m,i)=>{
-
-  html+=
-  '<button class="'+(selectedMonth===i?'active':'')+
+  html+='<button class="'+(selectedMonth===i?'active':'')+
   '" onclick="selectMonth('+i+')">'+m+'</button>';
-
  });
-
- el.innerHTML=html;
+ document.getElementById("monthButtons").innerHTML=html;
 }
 
 function selectMonth(i){
-
  selectedMonth=i;
-
  renderMonthButtons();
  renderMonth();
 }
 
-
-// ======================================
-// মাসিক হিসাব
-// ======================================
-
 function renderMonth(){
-
  if(!appData) return;
 
  const data=appData.months[selectedMonth];
-
- document.getElementById("monthTitle").textContent=
- "📊 "+data.name+" মাসের হিসাব";
-
  const s=data.summary;
+
+ document.getElementById("monthTitle").textContent="📊 "+data.name+" মাসের হিসাব";
 
  document.getElementById("monthlyBudget").textContent=money(s[0][1]);
  document.getElementById("monthlyDeposit").textContent=money(s[0][3]);
@@ -574,193 +359,139 @@ function renderMonth(){
 
  document.getElementById("budgetRemain").textContent=money(s[1][1]);
  document.getElementById("monthUsage").textContent=pct(s[1][3]);
- document.getElementById("transactionCount").textContent=clean(s[1][5]);
- document.getElementById("budgetStatus").textContent=clean(s[1][7]);
+ document.getElementById("transactionCount").textContent=String(s[1][5] ?? 0);
+ document.getElementById("budgetStatus").textContent=escapeHTML(s[1][7]);
 
  renderCategories(data);
  renderTransactions();
 }
 
-
-// ======================================
-// ক্যাটাগরি
-// ======================================
-
 function renderCategories(data){
-
  let html="";
 
  data.categoryAnalysis.forEach(r=>{
-
   if(!r[0]) return;
 
   const usage=num(r[4]);
+  const width=Math.max(0,Math.min(100,usage*100));
 
   html+="<tr>"+
-   "<td>"+clean(r[0])+"</td>"+
+   "<td>"+escapeHTML(r[0])+"</td>"+
    "<td>"+money(r[1])+"</td>"+
    "<td>"+money(r[2])+"</td>"+
    "<td>"+money(r[3])+"</td>"+
-   "<td>"+
-    pct(usage)+
-    '<div class="progress"><div style="width:'+
-    Math.max(0,Math.min(100,usage))+'%"></div></div>'+
-   "</td>"+
-  "</tr>";
-
+   "<td>"+pct(usage)+
+   '<div class="progress"><div style="width:'+width+'%"></div></div>'+
+   "</td></tr>";
  });
 
  document.getElementById("categoryTable").innerHTML=html;
 }
 
-
-// ======================================
-// লেনদেন
-// ======================================
-
 function renderTransactions(){
-
  if(!appData) return;
 
  const data=appData.months[selectedMonth];
- const search=document.getElementById("transactionSearch")
-  .value.toLowerCase();
-
+ const search=document.getElementById("transactionSearch").value.toLowerCase();
  let html="";
  let count=0;
 
  data.transactions.forEach(r=>{
+  const date=r[0],deposit=r[1],product=r[2],
+        expense=r[3],balance=r[5],category=r[6],comment=r[7];
 
-  const date=r[0];
-  const deposit=r[1];
-  const product=r[2];
-  const expense=r[3];
-  const balance=r[5];
-  const category=r[6];
-  const comment=r[7];
+  if(!date && !deposit && !product && !expense && !category && !comment) return;
 
-  if(!date && !deposit && !product && !expense &&
-     !category && !comment) return;
-
-  const text=[
-   product,category,comment,date
-  ].map(clean).join(" ").toLowerCase();
-
+  const text=[product,category,comment,date].map(v=>String(v ?? "")).join(" ").toLowerCase();
   if(search && !text.includes(search)) return;
 
   html+="<tr>"+
-   "<td>"+clean(date)+"</td>"+
+   "<td>"+escapeHTML(displayDate(date))+"</td>"+
    "<td>"+money(deposit)+"</td>"+
-   "<td>"+clean(product)+"</td>"+
+   "<td>"+escapeHTML(product)+"</td>"+
    "<td>"+money(expense)+"</td>"+
    "<td>"+money(balance)+"</td>"+
-   "<td>"+clean(category)+"</td>"+
-   "<td>"+clean(comment)+"</td>"+
+   "<td>"+escapeHTML(category)+"</td>"+
+   "<td>"+escapeHTML(comment)+"</td>"+
   "</tr>";
-
   count++;
-
  });
 
  document.getElementById("transactionTable").innerHTML=html;
-
- document.getElementById("transactionEmpty")
- .classList.toggle("hidden",count>0);
+ document.getElementById("transactionEmpty").classList.toggle("hidden",count>0);
 }
 
-
-// ======================================
-// Master List
-// ======================================
-
 function renderMaster(){
-
  if(!appData) return;
 
- const search=document.getElementById("masterSearch")
-  .value.toLowerCase();
-
- const items=appData.masterList;
+ const search=document.getElementById("masterSearch").value.toLowerCase();
  let html="";
  let count=0;
 
- items.forEach(r=>{
-
+ appData.masterList.forEach(r=>{
   if(!r[0]) return;
-
-  const text=r.map(clean).join(" ").toLowerCase();
-
+  const text=r.map(v=>String(v ?? "")).join(" ").toLowerCase();
   if(search && !text.includes(search)) return;
 
   html+="<tr>"+
-   "<td>"+clean(r[0])+"</td>"+
-   "<td>"+clean(r[1])+"</td>"+
-   "<td>"+clean(r[2])+"</td>"+
-   "<td>"+clean(r[3])+"</td>"+
+   "<td>"+escapeHTML(r[0])+"</td>"+
+   "<td>"+escapeHTML(r[1])+"</td>"+
+   "<td>"+escapeHTML(r[2])+"</td>"+
+   "<td>"+escapeHTML(r[3])+"</td>"+
   "</tr>";
-
   count++;
-
  });
 
  document.getElementById("masterTable").innerHTML=html;
-
- document.getElementById("masterEmpty")
- .classList.toggle("hidden",count>0);
+ document.getElementById("masterEmpty").classList.toggle("hidden",count>0);
 }
 
-
-// ======================================
-// সেটিংস
-// ======================================
-
 function renderSettings(){
-
  if(!appData) return;
 
  let html="";
-
  appData.settings.categories.forEach(r=>{
-
   if(!r[0]) return;
 
   html+="<tr>"+
-   "<td>"+clean(r[0])+"</td>"+
+   "<td>"+escapeHTML(r[0])+"</td>"+
    "<td>"+money(r[1])+"</td>"+
    "<td>"+money(r[2])+"</td>"+
-   "<td>"+clean(r[3])+"</td>"+
+   "<td>"+escapeHTML(r[3])+"</td>"+
   "</tr>";
-
  });
 
  document.getElementById("settingsTable").innerHTML=html;
 }
 
-
-// ======================================
-// শুরু
-// ======================================
-
+// প্রথমবার চালু
 refreshData();
 
+// প্রতি ৬০ সেকেন্ডে অনলাইন আপডেট
+setInterval(function(){
+ if(navigator.onLine && !document.hidden) refreshData();
+},60000);
 
-// প্রতি ৬০ সেকেন্ডে আপডেট
-setInterval(refreshData,60000);
-
-
-// ইন্টারনেট ফিরলে আপডেট
+// ইন্টারনেট ফিরে এলে আপডেট
 window.addEventListener("online",refreshData);
 
-
-// অ্যাপ পুনরায় খুললে আপডেট
+// অ্যাপে ফিরে এলে আপডেট
 document.addEventListener("visibilitychange",function(){
-
- if(!document.hidden){
-  refreshData();
- }
-
+ if(!document.hidden && navigator.onLine) refreshData();
 });
 
+// Service Worker নিবন্ধন
+if("serviceWorker" in navigator){
+ window.addEventListener("load",function(){
+  navigator.serviceWorker.register("./service-worker.js")
+   .then(function(registration){
+    console.log("Service Worker চালু:",registration.scope);
+   })
+   .catch(function(error){
+    console.error("Service Worker সমস্যা:",error);
+   });
+ });
+}
 </script>
 </body>
 </html>
