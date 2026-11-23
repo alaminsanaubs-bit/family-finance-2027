@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -137,18 +136,6 @@ footer{text-align:center;color:#64748b;padding:25px;font-size:12px}
 </div>
 
 <div class="section">
-<h3>🛒 Master List</h3>
-<input id="masterSearch" placeholder="🔎 পণ্যের নাম খুঁজুন..." oninput="renderMaster()">
-<div class="tableWrap">
-<table>
-<thead><tr><th>পণ্যের নাম</th><th>ক্যাটাগরি</th><th>একক</th><th>বিবরণ</th></tr></thead>
-<tbody id="masterTable"></tbody>
-</table>
-</div>
-<div id="masterEmpty" class="empty hidden">পণ্য পাওয়া যায়নি।</div>
-</div>
-
-<div class="section">
 <h3>⚙️ বাজেট ও সেটিংস</h3>
 <div class="tableWrap">
 <table>
@@ -166,6 +153,19 @@ footer{text-align:center;color:#64748b;padding:25px;font-size:12px}
 <tbody id="annualTable"></tbody>
 </table>
 </div>
+</div>
+
+<!-- Master List সবার শেষে -->
+<div class="section">
+<h3>🛒 Master List</h3>
+<input id="masterSearch" placeholder="🔎 পণ্যের নাম খুঁজুন..." oninput="renderMaster()">
+<div class="tableWrap">
+<table>
+<thead><tr><th>পণ্যের নাম</th><th>ক্যাটাগরি</th><th>একক</th><th>বিবরণ</th></tr></thead>
+<tbody id="masterTable"></tbody>
+</table>
+</div>
+<div id="masterEmpty" class="empty hidden">পণ্য পাওয়া যায়নি।</div>
 </div>
 
 </div>
